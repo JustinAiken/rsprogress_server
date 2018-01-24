@@ -1,0 +1,11 @@
+language: ruby
+rvm:
+ - 2.4.3
+
+before_script:
+  - mysql -e 'create database progress_dashboard_test'
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+
+script:
+  - bundle exec rspec spec/
