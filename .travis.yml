@@ -1,6 +1,18 @@
 language: ruby
 rvm:
  - 2.4.3
+dist: trusty
+sudo: required
+
+services:
+  - mysql
+
+addons:
+  apt:
+    sources:
+      - mysql-5.7-trusty
+    packages:
+      - mysql-server
 
 before_script:
   - mysql -e 'create database progress_dashboard_test'
