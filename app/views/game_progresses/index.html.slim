@@ -1,0 +1,38 @@
+
+row
+  h1 Game Progresses
+  = paginate @game_progresses
+
+  - @game_progresses.group_by { |gp| gp.ended_at.localtime.to_date }.each do |date, game_progresses|
+    h3= date
+    ul.list-group
+      - game_progresses.reverse.each do |gp|
+        li.list-group-item data-toggle="collapse" href="#collapse#{gp.id}"
+          - if gp.duration
+            = "#{gp.started_at.localtime.strftime("%-l:%M%P")}"
+            = " - "
+            = "#{gp.ended_at.localtime.strftime("%-l:%M%P")}"
+            = " (#{gp.duration} minutes)"
+          - else
+            = "Session ending at "
+            = "#{gp.ended_at.localtime.strftime("%-l:%M%P")}"
+          - if gp.arrangement_progresses.map(&:id).size < 50
+            ul.list-group.collapse id="collapse#{gp.id}"
+              - gp.arrangement_progresses.each do |gp_ap|
+                - ap = ArrangementProgressPresenter.new(gp_ap)
+                li.list-group-item
+                  table.table.table-striped.table_condensed.table-bordered
+                    caption= "#{ap.artist_name} - #{ap.song_name} #{ap.arrangement_type}".html_safe
+                    thead
+                      tr
+                        th
+                        th From
+                        th To
+                    tbody
+                      - ap.diffs.each do |label, changes|
+                        tr class=ap.row_class
+                          td= label
+                          td= changes[0].to_s.html_safe
+                          td= changes[1].to_s.html_safe
+
+  = paginate @game_progresses

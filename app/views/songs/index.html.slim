@@ -1,0 +1,6 @@
+ul
+- @songs.each do |song|
+  li
+    = link_to "#{song.artist.artist_name}", artist_songs_path(song.artist)
+    = " - "
+    = link_to song.song_name, song_path(song.song_key)

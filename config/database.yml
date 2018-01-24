@@ -1,0 +1,20 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  host: localhost
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password:
+
+test:
+  <<: *default
+  database: progress_dashboard_test
+
+development:
+  <<: *default
+  database: rocksmith_info
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  database_urL: <%= ENV["DATABASE_URL"] %>

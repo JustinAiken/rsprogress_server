@@ -1,0 +1,8 @@
+.panel.panel-default
+  .panel-heading
+    h3.panel-title= current_user.username
+  .panel-body
+    = simple_form_for @profile do |f|
+      = f.input :steam_username
+      = f.input :public, hint: "Not currently used, but maybe public profiles later"
+      = f.submit

@@ -1,0 +1,64 @@
+- if current_user.game_progresses.last.present?
+  table.table.table-striped.table-condensed.table-hover.table-responsive.dataTable data-source= game_progress_arrangement_progresses_path(current_user.game_progresses.last, format: :json)
+    thead
+      tr.filters
+        th
+        th= collection_check_boxes :filters, :type, %w{disc dlc rs1 rs1_dlc cdlc}, :to_s, :to_s, include_blank: false, item_wrapper_class: 'inline' do |b|
+          label.checkbox-inline
+            = b.check_box
+            = b.label
+
+        th
+        th
+
+        th
+        th= collection_check_boxes :filters, :arrangement, ["Any Guitar", "Bass", "Lead", "Rhythm", "Bonus"], :to_s, :to_s, include_blank: false, item_wrapper_class: 'inline' do |b|
+          label.checkbox-inline
+            = b.check_box
+            = b.label
+
+        th
+        th
+        th
+        th
+
+        th
+        th
+        th
+        th
+        th
+          = collection_check_boxes :filters, :flag, ["FC", "Note", "Green", "Almost", "Wut"], :to_s, :to_s, include_blank: false, item_wrapper_class: 'inline' do |b|
+            label.checkbox-inline
+              = b.check_box
+              = b.label
+
+      tr
+        th colspan=1
+        th colspan=3 Song Info
+        th colspan=3 Arrangement Info
+        th colspan=3 Learn a Song
+        th colspan=4 Score Attack
+        th colspan=1
+
+      tr style="text-align:center"
+        th style="width: 3%; border: none;"
+        th style="width: 3%; border: none;" Type
+        th Artist
+        th Song
+
+        th Difficulty
+        th style="width: 3%; border: none;" Arrangement
+        th Tuning
+
+        th Play Count
+        th Mastery
+        th Last Played
+
+        th Play Count
+        th Hard
+        th Master
+        th Last Played
+        th style="width: 2%; border: none;"
+    tbody
+- else
+  p No progress yet.

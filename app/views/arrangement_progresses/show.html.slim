@@ -1,0 +1,37 @@
+= csrf_meta_tags
+
+br
+.row
+  .col-md-12
+    b Notes
+    = simple_form_for @arrangement_note,
+    authenticity_token: true,
+    html: {id: "arr_#{@arrangement.id}_note"},
+    url: arrangement_arrangement_note_path(@arrangement),
+    method:  :post,
+    wrapper: :inline_form do |f|
+
+      = f.input :body
+
+.row
+  .col-md-6
+    b FC
+    = simple_form_for @personal_flag,
+    authenticity_token: true,
+    html:               {id: "arr_#{@arrangement.id}_flag"},
+    url:                arrangement_personal_flag_path(@arrangement),
+    method:             :post,
+    wrapper:            :inline_form do |f|
+
+      = f.input :fc,
+        as:              :boolean,
+        checked_value:   true,
+        unchecked_value: false
+
+      = f.input :happened_at
+
+  .col-md-6
+    p
+      strong Max Streak:
+      = " #{@arrangement_progress.streak} / #{@arrangement_progress.arrangement.data["Score_MaxNotes"]}"
+br

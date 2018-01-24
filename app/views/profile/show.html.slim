@@ -1,0 +1,60 @@
+.panel.panel-default
+  .panel-heading
+    h3.panel-title= current_user.username
+  .panel-body
+    p= "? / 47 Achievements unlocked"
+
+    - if @current_progress
+      .row
+        .col-md-6
+          table.table.table-condensed
+            thead
+              td
+                h1 Time Stats
+              td
+            tbody
+              tr
+                td
+                  b Session Mode
+                td= pretty_time @current_progress.session_seconds
+              tr
+                td
+                  b Games
+                td= pretty_time @current_progress.games_seconds
+              tr
+                td
+                  b Lessons
+                td= pretty_time @current_progress.lesson_second
+              tr
+                td
+                  b Learn a Song
+                td= pretty_time @current_progress.las_seconds
+              tr
+                td
+                  b RS Total
+                  td
+                    = pretty_time @current_progress.rs_seconds
+              tr
+                td
+                  b Steam Total
+                  td= pretty_time @current_progress.steam_mins * 60
+
+        .col-md-6
+          table.table.table-condensed
+            thead
+              td
+                h1 Misc Stats
+              td
+            tbody
+              tr
+                td
+                  b Missions Completed
+                td= @current_progress.missions_completed
+              tr
+                td
+                  b Session Count
+                td= @current_progress.session_count
+              tr
+                td
+                  b Longest Streak
+                  td= @current_progress.longest_streak
