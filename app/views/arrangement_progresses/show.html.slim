@@ -33,5 +33,7 @@ br
   .col-md-6
     p
       strong Max Streak:
-      = " #{@arrangement_progress.streak} / #{@arrangement_progress.arrangement.data["Score_MaxNotes"]}"
+      = " #{@arrangement_progress.streak}"
+      - if max_notes =  @arrangement_progress.arrangement&.data&.fetch("Score_MaxNotes")
+        = " / #{max_notes}"
 br
