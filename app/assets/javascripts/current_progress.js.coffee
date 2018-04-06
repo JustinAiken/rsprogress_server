@@ -5,8 +5,8 @@ $ ->
     serverSide:    true
     ajax:          $('.dataTable').data('source')
     pagingType:    "full_numbers"
-    displayLength: 1000
-    lengthMenu:    [100,500,1000,5000]
+    displayLength: 9999
+    lengthMenu:    [100,500,1000,5000,9999]
     stateSave:     false
     bJQueryUI:     true
     bAutoWidth:    false
