@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Core Rails:
-gem "rails","~> 5.1.1"
+gem "rails","~> 5.1.6"
 gem "mysql2"
 gem "puma", "~> 3.7"
 
