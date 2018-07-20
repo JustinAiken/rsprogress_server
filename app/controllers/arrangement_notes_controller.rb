@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ArrangementNotesController < ApplicationController
   before_action :authenticate_user!
 

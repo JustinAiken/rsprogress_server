@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ArrangementNote <  ActiveRecord::Base
   include InvalidatesFlagNoteCache
 

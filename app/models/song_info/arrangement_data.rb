@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SongInfo
   class ArrangementData < ActiveRecord::Base
     belongs_to :arrangement, inverse_of: :arrangement_data

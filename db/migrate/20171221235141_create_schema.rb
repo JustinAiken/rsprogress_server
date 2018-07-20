@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateSchema < ActiveRecord::Migration[5.1]
   def up
     create_table "arrangement_data", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FlagNoteCache
 
   attr_accessor :user_id, :ids

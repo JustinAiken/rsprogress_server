@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Filters
   def filter_arrangement
     ->(_column, search_string) {

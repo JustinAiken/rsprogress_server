@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ArrangementProgressDiffer
 
   attr_accessor :current_progress, :previous_progress

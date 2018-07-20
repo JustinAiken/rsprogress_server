@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GameProgress <  ActiveRecord::Base
   belongs_to :user
   has_many :arrangement_progresses, inverse_of: :game_progress, dependent: :destroy

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ArrangementProgress <  ActiveRecord::Base
   belongs_to :game_progress, inverse_of: :arrangement_progresses
   belongs_to :user
