@@ -35,6 +35,8 @@ RSpec.configure do |config|
     else
       example.run
     end
+
+    Faker::UniqueGenerator.clear
   end
 end
 

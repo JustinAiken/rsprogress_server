@@ -37,19 +37,46 @@ module SongInfo
     before_validation :fill_in_details, if: :new_record?
     before_save       :bump_difficulty, if: :cdlc?
 
-    scope :cdlc,   -> { joins(:song).where songs: {dlc_type: :cdlc} }
-    scope :guitar, -> { where.not type: %i{bass 5_string_bass} }
+    scope :cdlc,     -> { joins(:song).where songs: {dlc_type: :cdlc} }
+    scope :official, -> { joins(:song).where.not songs: {dlc_type: :cdlc} }
+    scope :guitar,   -> { where.not type: %i{bass 5_string_bass} }
+    scope :bass,     -> { where     type: %i{bass 5_string_bass} }
+
+    UNPLAYED_SQL = <<~SQL
+      LEFT OUTER JOIN arrangement_progresses ON
+      arrangement_progresses.arrangement_id = arrangements.id
+      AND arrangement_progresses.user_id =
+    SQL
+
+    scope :unplayed_by, ->(user) {
+      distinct
+        .joins(UNPLAYED_SQL, user.id.to_s)
+        .where(arrangement_progresses: {id: nil})
+    }
+
+    scope :any_standard, -> { where tuning: [
+      TUNING_MAPPINGS[:e_standard],
+      TUNING_MAPPINGS[:eb_standard],
+      TUNING_MAPPINGS[:d_standard],
+      TUNING_MAPPINGS[:cs_standard],
+      TUNING_MAPPINGS[:c_standard],
+      TUNING_MAPPINGS[:b_standard]
+    ]}
 
     TUNING_MAPPINGS = {
-      any_standard: "Any Standard",
-      any_drop:     "Any Drop-D",
       e_standard:   "E Standard",
       eb_standard:  "Eb Standard",
       d_standard:   "D Standard",
       cs_standard:  "C# Standard",
+      c_standard:   "C Standard",
+      b_standard:   "B Standard",
       drop_d:       "Drop D",
-      eb_drop_db:   "Eb Drop Db"
-    }.to_a
+      eb_drop_db:   "Eb Drop Db",
+      d_drop_c:     "D Drop C",
+      cs_drop_b:    "C# Drop B",
+      c_drop_bb:    "C Drop Bb",
+      b_drop_a:     "B Drop A"
+    }
 
     def to_s
       "#{artist_name} - #{song_name} (#{type})"
