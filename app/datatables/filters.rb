@@ -15,6 +15,7 @@ module Filters
       okays << SongInfo::Arrangement.types[:lead]             if requested_keys.include?("Lead")   || requested_keys.include?("Any Guitar")
       okays << SongInfo::Arrangement.types[:rhythm]           if requested_keys.include?("Rhythm") || requested_keys.include?("Any Guitar")
       okays << SongInfo::Arrangement.types[:bass]             if requested_keys.include?("Bass")
+      okays << SongInfo::Arrangement.types[:alternate_bass]   if requested_keys.include?("Bass")
       okays << SongInfo::Arrangement.types["5_string_bass"]   if requested_keys.include?("Bass")
       okays << SongInfo::Arrangement.types[:bonus_lead]       if requested_keys.include?("Bonus") || requested_keys.include?("Any Guitar")
       okays << SongInfo::Arrangement.types[:bonus_rhythm]     if requested_keys.include?("Bonus") || requested_keys.include?("Any Guitar")

@@ -27,7 +27,7 @@ class ArrangementProgressPresenter
   end
 
   def arrangement_type
-    %Q{<span class="label label-default">#{record.arrangement.type.titlecase}</span>}.html_safe
+    %Q{<span class="label label-default">#{record.arrangement.type.gsub("alternate", "alt").titlecase}</span>}.html_safe
   end
 
   def tuning_info

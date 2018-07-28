@@ -8,7 +8,7 @@ module SongInfo
 
     enum type: %i{
       lead rhythm bass
-      bonus_lead bonus_rhythm bonus_bass
+      bonus_lead bonus_rhythm alternate_bass
       alternate_lead alternate_rhythm
       5_string_bass
     }

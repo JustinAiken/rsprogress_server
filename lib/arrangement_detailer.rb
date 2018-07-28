@@ -36,20 +36,23 @@ private
 
   def parse_arrangement_type
     return "5_string_bass" if five_string_bass?
-    return "bass"          if data['ArrangementName'] == "Bass"
 
     a_represent = arrangement_properties['represent']
     is_bonus    = arrangement_properties['bonusArr']
     is_lead     = arrangement_properties['pathLead']
+    is_bass     = arrangement_properties['pathBass']
     is_rhy      = arrangement_properties['pathRhythm']
 
-    case [a_represent, is_bonus, is_lead, is_rhy]
-    when [1,           0,        1,       0] then :lead
-    when [1,           0,        0,       1] then :rhythm
-    when [0,           1,        1,       0] then :bonus_lead
-    when [0,           0,        1,       0] then :alternate_lead
-    when [0,           0,        0,       1] then :alternate_rhythm
-    when [0,           1,        0,       1] then :bonus_rhythm
+    case [a_represent, is_bonus, is_lead, is_rhy, is_bass]
+    when [1,           0,        1,       0,      0] then :lead
+    when [1,           0,        0,       1,      0] then :rhythm
+    when [0,           1,        1,       0,      0] then :bonus_lead
+    when [0,           0,        1,       0,      0] then :alternate_lead
+    when [0,           0,        0,       1,      0] then :alternate_rhythm
+    when [0,           1,        0,       1,      0] then :bonus_rhythm
+    when [1,           0,        0,       0,      1] then :bass
+    when [0,           0,        0,       0,      1] then :alternate_bass
+    when [0,           1,        0,       0,      1] then :alternate_bass
     end
   end
 
@@ -90,6 +93,7 @@ private
   end
 
   def five_string_bass?
+    return false unless song.present?
     return false unless song.dlc_type == "cdlc"              # Only customs have 5 string bass
     return false if     data['ArrangementName']   == "Bass"  # And they're never labeled "Bass"
     return false unless data['Tuning']['string4'] == data['Tuning']['string5']
