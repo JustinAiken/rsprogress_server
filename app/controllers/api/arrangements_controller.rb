@@ -3,9 +3,14 @@
 module API
   class ArrangementsController < ApplicationController
 
-    actions :show, :create
+    actions :show, :create, :update
 
     defaults resource_class: SongInfo::Arrangement
+
+    def update
+      @arrangement = SongInfo::Arrangement.find_by_identifier(params[:id])
+      update!
+    end
 
   private
 

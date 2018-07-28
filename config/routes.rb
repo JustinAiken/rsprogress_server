@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     resource :profile, only: [:show]
 
     resources :game_progresses, only: [:create, :show]
-    resources :arrangements,    only: [:create, :show] do
+    resources :arrangements,    only: [:create, :show, :update] do
       resources :flags, only: [:create]
       resources :notes, only: [:create]
     end
