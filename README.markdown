@@ -2,8 +2,10 @@
 
 # RS Progress Dashboard
 
-This is a standard Ruby on Rails app, for tracking Rocksmith progress.
+This is a standard Ruby on Rails app, for tracking Rocksmith progress.   
 Currently not hosted anywhere.
+
+![Screenshot](doc/screenshot.png)
 
 ## Dependencies
 
