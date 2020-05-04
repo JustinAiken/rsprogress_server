@@ -2,11 +2,11 @@ source "https://rubygems.org"
 
 # Core Rails:
 gem "rails","~> 5.1.6"
-gem "mysql2"
+gem "mysql2", "0.5.2"
 gem "puma", "~> 3.12.0"
 
 # Users/auth
-gem "devise",    "~> 4.3.0"
+gem "devise",    "~> 4.7"
 gem "cancancan", "2.1.0"
 gem "jwt"
 gem "inherited_resources", "~> 1.8.0"
