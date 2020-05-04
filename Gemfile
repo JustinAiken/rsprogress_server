@@ -3,7 +3,7 @@ source "https://rubygems.org"
 # Core Rails:
 gem "rails","~> 5.1.6"
 gem "mysql2", "0.5.2"
-gem "puma", "~> 3.12.0"
+gem "puma", "~> 3.12.4"
 
 # Users/auth
 gem "devise",    "~> 4.7"
