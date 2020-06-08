@@ -3,7 +3,7 @@
     thead
       tr.filters
         th
-        th= collection_check_boxes :filters, :type, %w{disc dlc rs1 rs1_dlc cdlc}, :to_s, :to_s, include_blank: false, item_wrapper_class: 'inline' do |b|
+        th= collection_check_boxes :filters, :type, %w{disc dlc rs1 rs1_dlc cdlc official}, :to_s, :to_s, include_blank: false, item_wrapper_class: 'inline' do |b|
           label.checkbox-inline
             = b.check_box
             = b.label

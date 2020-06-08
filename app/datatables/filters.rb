@@ -34,9 +34,9 @@ module Filters
   end
 
   private def build_dlc_types(requested_keys)
-    SongInfo::Song::DLC_TYPES.inject([]) do |memo, type|
-      memo << type if requested_keys.include?(type)
-      memo
+    [].tap do |types|
+      SongInfo::Song::DLC_TYPES.each { |type| types << type if type.in? requested_keys }
+      %w{disc dlc rs1 rs1_dlc}.each { |type| types << type if requested_keys.include? "official" }
     end
   end
 

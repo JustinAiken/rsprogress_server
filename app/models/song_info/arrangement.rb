@@ -41,8 +41,8 @@ module SongInfo
 
     scope :cdlc,     -> { joins(:song).where songs: {dlc_type: :cdlc} }
     scope :official, -> { joins(:song).where.not songs: {dlc_type: :cdlc} }
-    scope :guitar,   -> { where.not type: %i{bass 5_string_bass} }
-    scope :bass,     -> { where     type: %i{bass 5_string_bass} }
+    scope :guitar,   -> { where.not type: %i{bass 5_string_bass alternate_bass} }
+    scope :bass,     -> { where     type: %i{bass 5_string_bass alternate_bass} }
 
     UNPLAYED_SQL = <<~SQL
       LEFT OUTER JOIN arrangement_progresses ON
