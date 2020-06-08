@@ -152,7 +152,7 @@ GEM
     minitest (5.14.1)
     multi_json (1.13.1)
     multipart-post (2.0.0)
-    mysql2 (0.5.2)
+    mysql2 (0.5.3)
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
@@ -304,7 +304,7 @@ DEPENDENCIES
   jwt
   kaminari
   listen
-  mysql2 (= 0.5.2)
+  mysql2 (= 0.5.3)
   pry-rails
   puma (~> 3.12.6)
   rails (~> 5.1.7)
