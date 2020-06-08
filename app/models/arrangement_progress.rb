@@ -109,10 +109,10 @@ private
   end
 
   def set_user_id
-    self.user_id ||= game_progress.user_id
+    self.user_id ||= game_progress&.user_id
   end
 
   def set_steam_mins
-    self.steam_mins ||= game_progress.steam_mins
+    self.steam_mins ||= game_progress&.steam_mins
   end
 end
