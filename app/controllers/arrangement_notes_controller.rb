@@ -12,7 +12,7 @@ class ArrangementNotesController < ApplicationController
       render json: arrangement_note.to_json
     else
       arrangement_note.destroy if arrangement_note.persisted?
-      head :error
+      head :internal_server_error
     end
   end
 
