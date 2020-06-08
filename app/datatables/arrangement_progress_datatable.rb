@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ArrangementProgressDatatable < AjaxDatatablesRails::Base
+class ArrangementProgressDatatable < ApplicationDatatable
   include Filters
   include DirtyHack
 

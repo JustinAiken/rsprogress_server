@@ -31,7 +31,7 @@ gem "jbuilder",     "~> 2.5"
 
 # Datatable:
 gem "jquery-datatables-rails", "~> 3.4.0"
-gem "ajax-datatables-rails"
+gem "ajax-datatables-rails",   "~> 1.2.0"
 
 group :development, :test do
   gem "listen"

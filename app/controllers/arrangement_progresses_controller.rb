@@ -9,7 +9,7 @@ class ArrangementProgressesController < ApplicationController
   def index
     respond_to do |format|
       format.json do
-        render json: ArrangementProgressDatatable.new(view_context, game_progress: @game_progress)
+        render json: ArrangementProgressDatatable.new(params, view_context: view_context, game_progress: @game_progress)
       end
     end
   end
