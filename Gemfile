@@ -19,7 +19,7 @@ gem "rsgt"
 gem "jquery-rails"
 gem "slim-rails"
 gem "simple_form"
-gem "bootstrap-sass", "~> 3.3.7"
+gem "bootstrap-sass", "~> 3.4.1"
 gem "bootstrap-sass-extras"
 gem "kaminari"
 
